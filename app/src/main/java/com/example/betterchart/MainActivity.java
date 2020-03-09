@@ -4,11 +4,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.betterchart.chart.ChartRenderer;
+import com.example.betterchart.chart.Cycle;
+import com.example.betterchart.chart.DayInfo;
+import com.example.betterchart.chart.Sticker;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        renderChart();
+    }
+
+    private void renderChart() {
+        // For prototyping purposes only!
+        DayInfo day1 = new DayInfo(Sticker.RED, Date.valueOf("2020-03-09"));
+        DayInfo day2 = new DayInfo(Sticker.GREEN, Date.valueOf("2020-03-08"));
+        DayInfo day3 = new DayInfo(Sticker.RED, Date.valueOf("2020-03;10"));
+        List<DayInfo> daysList = new ArrayList<>();
+        daysList.add(day1);
+        daysList.add(day2);
+        daysList.add(day3);
+
+        Cycle myTestCycle = Cycle.fromDays(daysList);
+        ChartRenderer.render(myTestCycle);
+
     }
 }
