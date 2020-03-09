@@ -13,7 +13,7 @@ public class CycleTest {
     public void fromDaysSortsByDate() {
         DayInfo day1 = new DayInfo(Sticker.RED, Date.valueOf("2020-03-09"));
         DayInfo day2 = new DayInfo(Sticker.GREEN, Date.valueOf("2020-03-08"));
-        DayInfo day3 = new DayInfo(Sticker.RED, Date.valueOf("2020-03;10"));
+        DayInfo day3 = new DayInfo(Sticker.RED, Date.valueOf("2020-03-10"));
         List<DayInfo> daysList = new ArrayList<>();
         daysList.add(day1);
         daysList.add(day2);
@@ -23,7 +23,7 @@ public class CycleTest {
         Cycle.fromDays(daysList);
 
         assertEquals(daysList.get(0).getDate(), Date.valueOf("2020-03-08"));
-        assertEquals(daysList.get(0).getDate(), Date.valueOf("2020-03-09"));
-        assertEquals(daysList.get(0).getDate(), Date.valueOf("2020-03-10"));
+        assertEquals(daysList.get(1).getDate(), Date.valueOf("2020-03-09"));
+        assertEquals(daysList.get(2).getDate(), Date.valueOf("2020-03-10"));
     }
 }
