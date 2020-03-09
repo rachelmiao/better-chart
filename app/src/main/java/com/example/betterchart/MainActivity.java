@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         daysList.add(day3);
 
         Cycle myTestCycle = Cycle.fromDays(daysList);
-        ChartRenderer.render(myTestCycle);
+//        ChartRenderer.render(myTestCycle);
 
     }
 }

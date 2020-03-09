@@ -25,6 +25,8 @@ public class Cycle {
      * @return
      */
     public static Cycle fromDays(List<DayInfo> days) {
+        // TODO: handle empty/null
+
         // Sort days in ascending order
         Collections.sort(days, new DaysComparator());
 
@@ -39,5 +41,9 @@ public class Cycle {
         public int compare(DayInfo dayInfo1, DayInfo dayInfo2) {
             return dayInfo1.getDate().compareTo(dayInfo2.getDate());
         }
+    }
+
+    public Date getStartDate() {
+        return startDate;
     }
 }
