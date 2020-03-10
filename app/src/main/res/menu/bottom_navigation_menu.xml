@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Today"
+        android:id="@+id/navigation_today"
+        android:icon="@android:drawable/ic_menu_today"/>
+    <item android:title="Chart"
+        android:id="@+id/navigation_chart"
+        android:icon="@android:drawable/ic_menu_gallery"/>
+    <item android:title="Me"
+        android:id="@+id/navigation_me"
+        android:icon="@android:drawable/ic_menu_info_details"/>
+</menu>

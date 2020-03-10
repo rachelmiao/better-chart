@@ -1,49 +1,61 @@
 package com.example.betterchart;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.ViewGroup;
+import android.view.MenuItem;
 
-import com.example.betterchart.chart.ChartRenderer;
-import com.example.betterchart.chart.Cycle;
-import com.example.betterchart.chart.DayInfo;
-import com.example.betterchart.chart.Sticker;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import org.threeten.bp.LocalDate;
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.betterchart.fragment.ChartFragment;
+import com.example.betterchart.fragment.MeFragment;
+import com.example.betterchart.fragment.TodayFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        renderChart();
-    }
-
-    private void renderChart() {
-        // For prototyping purposes only!
-        DayInfo day1 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 5));
-        DayInfo day2 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 6));
-        DayInfo day3 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 7));
-        DayInfo day4 = new DayInfo(Sticker.GREEN, LocalDate.of(2020, 3, 8));
-        DayInfo day5 = new DayInfo(Sticker.GREEN, LocalDate.of(2020, 3, 9));
-        DayInfo day6 = new DayInfo(Sticker.WHITE, LocalDate.of(2020, 3, 11));
-        List<DayInfo> daysList = new ArrayList<>();
-        daysList.add(day1);
-        daysList.add(day2);
-        daysList.add(day3);
-        daysList.add(day4);
-        daysList.add(day5);
-        daysList.add(day6);
-
-        Cycle myTestCycle = Cycle.fromDays(daysList);
-        ChartRenderer.render(myTestCycle, (ViewGroup) findViewById(R.id.container));
+        configureBottomNavigation();
 
     }
+
+    private void configureBottomNavigation() {
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_today:
+                                openFragment(TodayFragment.newInstance());
+                                return true;
+                            case R.id.navigation_chart:
+                                openFragment(ChartFragment.newInstance());
+                                return true;
+                            case R.id.navigation_me:
+                                openFragment(MeFragment.newInstance());
+                                return true;
+                        }
+                        return false;
+                    }
+                };
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
+    }
+
+    private void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+
 }
