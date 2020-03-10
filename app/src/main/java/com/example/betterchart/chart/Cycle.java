@@ -15,8 +15,9 @@ public class Cycle {
     private LocalDate endDate;
     private List<DayInfo> days;
 
-    private Cycle(LocalDate startDate, List<DayInfo> days) {
+    private Cycle(LocalDate startDate, LocalDate endDate, List<DayInfo> days) {
         this.startDate = startDate;
+        this.endDate = endDate;
         this.days = days;
     }
 
@@ -38,7 +39,7 @@ public class Cycle {
         // Set end date
         LocalDate endDate = days.get(days.size() - 1).getDate();
 
-        return new Cycle(startDate, days);
+        return new Cycle(startDate, endDate, days);
     }
 
     static class DaysComparator implements Comparator<DayInfo> {
