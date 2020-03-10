@@ -1,8 +1,9 @@
 package com.example.betterchart.chart;
 
+import org.threeten.bp.LocalDate;
+
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,17 +11,18 @@ import java.util.List;
  */
 public class Cycle {
 
-    private Date startDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private List<DayInfo> days;
 
-    private Cycle(Date startDate, List<DayInfo> days) {
+    private Cycle(LocalDate startDate, List<DayInfo> days) {
         this.startDate = startDate;
         this.days = days;
     }
 
     /**
      * This constructor ensures that startDate is indeed the earliest date in days and also sorts
-     * the days in ascending order by date.
+     * the days in ascending order by date. It also sets the end date.
      * @param days
      * @return
      */
@@ -31,7 +33,10 @@ public class Cycle {
         Collections.sort(days, new DaysComparator());
 
         // Set first date
-        Date startDate = days.get(0).getDate();
+        LocalDate startDate = days.get(0).getDate();
+
+        // Set end date
+        LocalDate endDate = days.get(days.size() - 1).getDate();
 
         return new Cycle(startDate, days);
     }
@@ -43,7 +48,15 @@ public class Cycle {
         }
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public List<DayInfo> getDays() {
+        return days;
     }
 }

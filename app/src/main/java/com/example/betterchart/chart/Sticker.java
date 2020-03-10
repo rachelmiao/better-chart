@@ -8,7 +8,8 @@ import android.graphics.Color;
 public enum Sticker {
     RED("red"),
     GREEN("green"),
-    WHITE("white");
+    WHITE("white"),
+    UNDEFINED("gray");
 
     private String color;
 
@@ -24,8 +25,10 @@ public enum Sticker {
                 return Color.GREEN;
             case WHITE:
                 return Color.WHITE;
+            case UNDEFINED:
+                // fall-through
             default:
-                return Color.WHITE;
+                return Color.GRAY;
         }
     }
 }
