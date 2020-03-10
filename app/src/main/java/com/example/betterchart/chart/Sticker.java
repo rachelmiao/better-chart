@@ -17,8 +17,8 @@ public enum Sticker {
         this.color = color;
     }
 
-    int getColor(Sticker sticker) {
-        switch (sticker) {
+    int getColor() {
+        switch (this) {
             case RED:
                 return Color.RED;
             case GREEN:

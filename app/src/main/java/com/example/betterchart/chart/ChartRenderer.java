@@ -29,19 +29,23 @@ public class ChartRenderer {
         // Draw rectangles from the start date to the end date, filling in the correct color
         // if the day's info is specified.
         Iterator<DayInfo> dayIterator = cycle.getDays().iterator();
-        LocalDate currentDate = cycle.getStartDate();
-        for (int i = 0; i < getNumCycleDays(cycle); i++) {
-            DayInfo day = dayIterator.next();
+        DayInfo currentDayInfo = dayIterator.next();
+        LocalDate currentDate = currentDayInfo.getDate();
 
+        for (int i = 0; i < getNumCycleDays(cycle); i++) {
+            System.out.println("currentDayInfo: " + currentDayInfo.getDate());
+            System.out.println("currentDate: " + currentDate);
             // Check if there is an entry for that day in the cycle, adjust the stamp accordingly.
             Sticker sticker = Sticker.UNDEFINED;
-            if (day.getDate().equals(currentDate)) {
+            if (currentDayInfo.getDate().equals(currentDate)) {
+                System.out.println("Entry for this date exists.");
                 // There is an entry
-                sticker = day.getSticker();
+                sticker = currentDayInfo.getSticker();
+                currentDayInfo = dayIterator.next();
             }
 
             // Create the sticker view with the correct color
-
+            System.out.println("Sticker color: " + sticker.getColor());
             // Attach to the parent container
         }
 

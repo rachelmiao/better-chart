@@ -9,6 +9,8 @@ import com.example.betterchart.chart.Cycle;
 import com.example.betterchart.chart.DayInfo;
 import com.example.betterchart.chart.Sticker;
 
+import org.threeten.bp.LocalDate;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void renderChart() {
         // For prototyping purposes only!
-        DayInfo day1 = new DayInfo(Sticker.RED, Date.valueOf("2020-03-09"));
-        DayInfo day2 = new DayInfo(Sticker.GREEN, Date.valueOf("2020-03-08"));
-        DayInfo day3 = new DayInfo(Sticker.RED, Date.valueOf("2020-03;10"));
+        DayInfo day1 = new DayInfo(Sticker.RED, LocalDate.parse("2020-03-09"));
+        DayInfo day2 = new DayInfo(Sticker.GREEN, LocalDate.parse("2020-03-08"));
+        DayInfo day3 = new DayInfo(Sticker.RED, LocalDate.parse("2020-03;10"));
         List<DayInfo> daysList = new ArrayList<>();
         daysList.add(day1);
         daysList.add(day2);
