@@ -3,8 +3,12 @@ package com.example.betterchart.chart;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.betterchart.R;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 /**
  * Corresponds to XML layout and acts as a wrapper that allows an entry for a single day to be
@@ -20,6 +24,11 @@ public class DayView extends LinearLayout {
     public void setStickerColor(int color) {
         GradientDrawable background = (GradientDrawable) findViewById(R.id.sticker).getBackground();
         background.setColor(color);
+    }
+
+    public void setStickerDate(LocalDate date) {
+        TextView dateText = (TextView) findViewById(R.id.sticker_date);
+        dateText.setText(ChartUtil.getDateString(date));
     }
 
 }

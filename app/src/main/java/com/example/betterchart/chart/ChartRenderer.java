@@ -35,14 +35,16 @@ public class ChartRenderer {
                 sticker = dayInfo.getSticker();
                 j++;  // Increment DayInfo list iterator
             }
-            date = date.plusDays(1);  // Increment date
 
-            // Create the sticker view with the correct color
+            // Create the sticker view with the correct color and date
             DayView dayView = new DayView(container.getContext());
             dayView.setStickerColor(sticker.getColor());
+            dayView.setStickerDate(date);
 
             // Attach to the parent container
             container.addView(dayView);
+
+            date = date.plusDays(1);  // Increment date
         }
 
     }

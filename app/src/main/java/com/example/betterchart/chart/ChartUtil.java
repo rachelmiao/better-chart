@@ -1,5 +1,7 @@
 package com.example.betterchart.chart;
 
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.temporal.ChronoUnit;
 
 import java.util.Comparator;
@@ -20,6 +22,10 @@ class ChartUtil {
         public int compare(DayInfo dayInfo1, DayInfo dayInfo2) {
             return dayInfo1.getDate().compareTo(dayInfo2.getDate());
         }
+    }
+
+    static String getDateString(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("M/dd"));
     }
 
 }
