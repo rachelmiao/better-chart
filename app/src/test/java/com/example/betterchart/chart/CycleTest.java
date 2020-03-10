@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class CycleTest {
 
@@ -63,11 +65,21 @@ public class CycleTest {
         assertEquals(cycle.getEndDate(), LocalDate.of(2020, 3, 10));
     }
 
-//    @Test
-//    public void fromDaysHandlesEmptyList() {
-//        // Call constructor on empty list.
-//        Cycle cycle = Cycle.fromDays(new ArrayList<DayInfo>());
-//
-//        // TODO: figure out how this should be handled
-//    }
+    @Test
+    public void fromDaysHandlesEmptyList() {
+        // Call constructor on empty list.
+        Cycle cycle = Cycle.fromDays(new ArrayList<DayInfo>());
+
+        assertNotNull(cycle);
+        assertTrue(cycle.getDays().isEmpty());
+    }
+
+    @Test
+    public void fromDaysHandlesNullList() {
+        // Call constructor on null list.
+        Cycle cycle = Cycle.fromDays(null);
+
+        assertNotNull(cycle);
+        assertTrue(cycle.getDays().isEmpty());
+    }
 }

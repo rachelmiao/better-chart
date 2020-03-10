@@ -1,14 +1,15 @@
 package com.example.betterchart.chart;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.Shape;
 import android.widget.LinearLayout;
 
 import com.example.betterchart.R;
 
+/**
+ * Corresponds to XML layout and acts as a wrapper that allows an entry for a single day to be
+ * programmatically manipulated. Shows sticker, date, and optional notes.
+ */
 public class DayView extends LinearLayout {
 
     public DayView(Context context) {

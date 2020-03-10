@@ -7,6 +7,7 @@ import org.threeten.bp.LocalDate;
  */
 public class DayInfo {
     private Sticker sticker;
+    // TODO: consider making the date a key to ensure uniqueness
     private LocalDate date;
 
     public DayInfo(Sticker sticker, LocalDate date) {

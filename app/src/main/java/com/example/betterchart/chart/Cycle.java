@@ -1,9 +1,11 @@
 package com.example.betterchart.chart;
 
+import android.util.Log;
+
 import org.threeten.bp.LocalDate;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -11,6 +13,8 @@ import java.util.List;
  */
 public class Cycle {
 
+    private static final String LOGGER = Cycle.class.getName();
+    private static final int MAX_CYCLE_DAYS = 60;
     private LocalDate startDate;
     private LocalDate endDate;
     private List<DayInfo> days;
@@ -28,10 +32,21 @@ public class Cycle {
      * @return
      */
     public static Cycle fromDays(List<DayInfo> days) {
-        // TODO: handle empty/null
+        // Handle null list by setting it to empty.
+        if (days == null) {
+            Log.e(LOGGER, "days is null");
+            days = new ArrayList<>();
+        }
+
+        // Handle empty list
+        if (days.isEmpty()) {
+            return new Cycle(LocalDate.MIN, LocalDate.MIN, new ArrayList<DayInfo>());
+        }
+
+        // TODO: handle cycles that exceed max length
 
         // Sort days in ascending order
-        Collections.sort(days, new DaysComparator());
+        Collections.sort(days, new ChartUtil.DaysComparator());
 
         // Set first date
         LocalDate startDate = days.get(0).getDate();
@@ -40,13 +55,6 @@ public class Cycle {
         LocalDate endDate = days.get(days.size() - 1).getDate();
 
         return new Cycle(startDate, endDate, days);
-    }
-
-    static class DaysComparator implements Comparator<DayInfo> {
-        @Override
-        public int compare(DayInfo dayInfo1, DayInfo dayInfo2) {
-            return dayInfo1.getDate().compareTo(dayInfo2.getDate());
-        }
     }
 
     public LocalDate getStartDate() {
