@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Today"
-        android:id="@+id/navigation_today"
+        android:id="@+id/navigation_day"
         android:icon="@android:drawable/ic_menu_today"/>
     <item android:title="Chart"
         android:id="@+id/navigation_chart"

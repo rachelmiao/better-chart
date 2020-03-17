@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.betterchart.fragment.ChartFragment;
 import com.example.betterchart.fragment.MeFragment;
-import com.example.betterchart.fragment.TodayFragment;
+import com.example.betterchart.fragment.DayFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.navigation_today:
-                                openFragment(TodayFragment.newInstance());
+                            case R.id.navigation_day:
+                                openFragment(DayFragment.newInstance());
                                 return true;
                             case R.id.navigation_chart:
                                 openFragment(ChartFragment.newInstance());

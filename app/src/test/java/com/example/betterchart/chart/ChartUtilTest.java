@@ -13,8 +13,14 @@ public class ChartUtilTest {
 
     @Test
     public void getNumCycleDays() {
-        DayInfo day1 = new DayInfo(Sticker.RED, LocalDate.parse("2020-03-01"));
-        DayInfo day2 = new DayInfo(Sticker.RED, LocalDate.parse("2020-03-10"));
+        DayInfo day1 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 1))
+                .setIsFirstDay(true).create();
+        DayInfo day2 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 10))
+                .setIsFirstDay(false).create();
         List<DayInfo> days = Arrays.asList(new DayInfo[]{day1, day2});
         Cycle cycle = Cycle.fromDays(days);
 

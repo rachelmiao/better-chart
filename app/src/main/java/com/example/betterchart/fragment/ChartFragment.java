@@ -39,12 +39,30 @@ public class ChartFragment extends Fragment {
 
     private void renderChart(View view) {
         // For prototyping purposes only!
-        DayInfo day1 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 5));
-        DayInfo day2 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 6));
-        DayInfo day3 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 7));
-        DayInfo day4 = new DayInfo(Sticker.GREEN, LocalDate.of(2020, 3, 8));
-        DayInfo day5 = new DayInfo(Sticker.GREEN, LocalDate.of(2020, 3, 9));
-        DayInfo day6 = new DayInfo(Sticker.WHITE, LocalDate.of(2020, 3, 11));
+        DayInfo day1 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 5))
+                .setIsFirstDay(true).create();
+        DayInfo day2 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 6))
+                .setIsFirstDay(false).create();
+        DayInfo day3 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 7))
+                .setIsFirstDay(false).create();
+        DayInfo day4 = new DayInfo.Builder()
+                .setSticker(Sticker.GREEN)
+                .setDate(LocalDate.of(2020, 3, 8))
+                .setIsFirstDay(false).create();
+        DayInfo day5 = new DayInfo.Builder()
+                .setSticker(Sticker.GREEN)
+                .setDate(LocalDate.of(2020, 3, 9))
+                .setIsFirstDay(false).create();
+        DayInfo day6 = new DayInfo.Builder()
+                .setSticker(Sticker.WHITE)
+                .setDate(LocalDate.of(2020, 3, 11))
+                .setIsFirstDay(true).create();
         List<DayInfo> daysList = new ArrayList<>();
         daysList.add(day1);
         daysList.add(day2);

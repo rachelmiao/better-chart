@@ -34,9 +34,18 @@ public class ChartRendererTest {
 
     @Test
     public void render() {
-        DayInfo day1 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 9));
-        DayInfo day2 = new DayInfo(Sticker.GREEN, LocalDate.of(2020, 3, 8));
-        DayInfo day3 = new DayInfo(Sticker.RED, LocalDate.of(2020, 3, 10));
+        DayInfo day1 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 9))
+                .setIsFirstDay(false).create();
+        DayInfo day2 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 8))
+                .setIsFirstDay(false).create();
+        DayInfo day3 = new DayInfo.Builder()
+                .setSticker(Sticker.RED)
+                .setDate(LocalDate.of(2020, 3, 10))
+                .setIsFirstDay(false).create();
         List<DayInfo> daysList = new ArrayList<>();
         daysList.add(day1);
         daysList.add(day2);
