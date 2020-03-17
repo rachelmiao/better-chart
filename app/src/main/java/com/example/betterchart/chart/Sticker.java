@@ -25,4 +25,17 @@ public enum Sticker {
                 return Color.LTGRAY;
         }
     }
+
+    public static Sticker fromStringColor(String color) {
+        switch (color) {
+            case "red":
+                return Sticker.RED;
+            case "green":
+                return Sticker.GREEN;
+            case "white":
+                return Sticker.WHITE;
+            default:
+                return Sticker.UNDEFINED;
+        }
+    }
 }
