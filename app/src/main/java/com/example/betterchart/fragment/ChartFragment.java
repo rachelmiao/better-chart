@@ -55,7 +55,8 @@ public class ChartFragment extends Fragment {
         return view;
     }
 
-    public void renderChartFromAirtable(final ViewGroup chartContainer) {
+    // Note: This is for prototyping
+    void renderChartFromAirtable(final ViewGroup chartContainer) {
         String url = BuildConfig.AIRTABLE_URL + "days?maxRecords=10&filterByFormula=%7Busername%7D%3D'rachelmiao'";
         final Map<String, String> headers = new HashMap<>();
         String airtableKey = BuildConfig.AIRTABLE_KEY;
@@ -105,7 +106,7 @@ public class ChartFragment extends Fragment {
                     }
                 }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 return headers;
             }
         };
