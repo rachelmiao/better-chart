@@ -10,16 +10,15 @@ public class MucusData {
     public static final int MUCUS_THRICE = 3;
     public static final int MUCUS_ALL_DAY = 4;
 
-    private int mucusNumber;  // This number should be one of: 0, 2, 4, 6, 8, 10
-    private List<String> mucusTypes;
+    private int mucusNumber;  // This number is: 0, 2, 4, 6, 8, 10, or -1 (not set).
+    private List<MucusType> mucusTypes;
     private int mucusFrequency;
-    private boolean isFirstDay;
 
     public int getMucusNumber() {
         return mucusNumber;
     }
 
-    public List<String> getMucusTypes() {
+    public List<MucusType> getMucusTypes() {
         return mucusTypes;
     }
 
@@ -27,41 +26,44 @@ public class MucusData {
         return mucusFrequency;
     }
 
-    public boolean isFirstDay() {
-        return isFirstDay;
-    }
 
     private MucusData(Builder builder) {
         this.mucusNumber = builder.mucusNumber;
         this.mucusTypes = builder.mucusTypes;
         this.mucusFrequency = builder.mucusFrequency;
-        this.isFirstDay = builder.isFirstDay;
+    }
+
+    boolean isPeakType() {
+        // If clear, stretchy, or lubricative, return true.
+        boolean isClear = mucusTypes.contains(MucusType.CLEAR);
+        boolean isStretchy = (mucusNumber >= 6);
+        boolean isLubricative = mucusTypes.contains(MucusType.LUBRICATIVE);
+
+        return isClear || isStretchy || isLubricative;
+    }
+
+    boolean isNonPeakType() {
+        return (mucusNumber >= 0 && mucusNumber <= 4);
     }
 
     public static class Builder {
 
-        private int mucusNumber;
-        private List<String> mucusTypes;
+        private int mucusNumber = -1;
+        private List<MucusType> mucusTypes;
         private int mucusFrequency;
-        private boolean isFirstDay;
 
         public Builder setMucusNumber(int number) {
             this.mucusNumber = number;
             return this;
         }
 
-        public Builder setMucusTypes(List<String> types) {
+        public Builder setMucusTypes(List<MucusType> types) {
             this.mucusTypes = types;
             return this;
         }
 
         public Builder setMucusFrequency(int frequency) {
             this.mucusFrequency = frequency;
-            return this;
-        }
-
-        public Builder setIsFirstDay(boolean isFirstDay) {
-            this.isFirstDay = isFirstDay;
             return this;
         }
 

@@ -22,8 +22,7 @@ public class DayView extends LinearLayout {
     }
 
     public void setStickerColor(int color) {
-        GradientDrawable background = (GradientDrawable) findViewById(R.id.sticker).getBackground();
-        background.setColor(color);
+        ChartUtil.setBackgroundColor(getContext(), findViewById(R.id.sticker), color);
     }
 
     public void setStickerDate(LocalDate date) {

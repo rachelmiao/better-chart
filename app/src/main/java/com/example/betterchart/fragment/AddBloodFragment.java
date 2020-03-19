@@ -44,9 +44,10 @@ public class AddBloodFragment extends Fragment {
 
         // Set radio button corresponding to existing dayinfo entry
         FlowType existingFlowType = mainActivity.getDayInfo().getFlowType();
-        RadioButton rb = buttonMap.get(existingFlowType);
-        rb.setChecked(true);
-
+        if (existingFlowType != null) {
+            RadioButton rb = buttonMap.get(existingFlowType);
+            rb.setChecked(true);
+        }
 
         Button b = view.findViewById(R.id.add_blood_done_button);
         b.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +56,6 @@ public class AddBloodFragment extends Fragment {
                 RadioButton b = radioFlow.findViewById(radioFlow.getCheckedRadioButtonId());
                 String selectedFlow = (String) b.getText();
                 FlowType flowType = FlowType.fromString(getContext(), selectedFlow);
-
-                Log.d(AddBloodFragment.class.getName(), "FlowType: " + flowType.name());
 
                 // Set the FlowType.
                 ((MainActivity) getActivity()).setFlowType(flowType);

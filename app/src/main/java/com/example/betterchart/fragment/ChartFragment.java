@@ -82,8 +82,7 @@ public class ChartFragment extends Fragment {
                                 String date = fields.getString("date");
                                 String sticker = fields.getString("sticker");
 
-                                DayInfo.Builder dayInfo = new DayInfo.Builder().setDate(LocalDate.parse(date))
-                                        .setSticker(Sticker.fromStringColor(sticker));
+                                DayInfo.Builder dayInfo = new DayInfo.Builder().setDate(LocalDate.parse(date));
 
                                 if (fields.has("isFirstDay")) {
                                     dayInfo.setIsFirstDay(fields.getBoolean("isFirstDay"));

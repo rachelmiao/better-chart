@@ -15,15 +15,12 @@ public class CycleTest {
     @Test
     public void fromDaysSortsByDate() {
         DayInfo day1 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 9))
                 .setIsFirstDay(false).create();
         DayInfo day2 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 8))
                 .setIsFirstDay(true).create();
         DayInfo day3 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 10))
                 .setIsFirstDay(false).create();
         List<DayInfo> daysList = new ArrayList<>();
@@ -43,15 +40,12 @@ public class CycleTest {
     @Test
     public void fromDaysSetsStartDate() {
         DayInfo day1 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 9))
                 .setIsFirstDay(false).create();
         DayInfo day2 = new DayInfo.Builder()
-                .setSticker(Sticker.GREEN)
                 .setDate(LocalDate.of(2020, 3, 8))
                 .setIsFirstDay(true).create();
         DayInfo day3 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 10))
                 .setIsFirstDay(false).create();
         List<DayInfo> daysList = new ArrayList<>();
@@ -69,15 +63,12 @@ public class CycleTest {
     @Test
     public void fromDaysSetsEndDate() {
         DayInfo day1 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 9))
                 .setIsFirstDay(false).create();
         DayInfo day2 = new DayInfo.Builder()
-                .setSticker(Sticker.GREEN)
                 .setDate(LocalDate.of(2020, 3, 8))
                 .setIsFirstDay(true).create();
         DayInfo day3 = new DayInfo.Builder()
-                .setSticker(Sticker.RED)
                 .setDate(LocalDate.of(2020, 3, 10))
                 .setIsFirstDay(false).create();
         List<DayInfo> daysList = new ArrayList<>();

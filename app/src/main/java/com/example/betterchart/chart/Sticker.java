@@ -2,6 +2,10 @@ package com.example.betterchart.chart;
 
 import android.graphics.Color;
 
+import androidx.core.content.ContextCompat;
+
+import com.example.betterchart.R;
+
 /**
  * Specifies the types of stickers and instructions on how they are to be drawn.
  */
@@ -11,31 +15,21 @@ public enum Sticker {
     WHITE,
     UNDEFINED;
 
+    /**
+     * Note: These colors are resource references, not color ints
+     */
     public int getColor() {
         switch (this) {
             case RED:
-                return Color.RED;
+                return R.color.sticker_red;
             case GREEN:
-                return Color.GREEN;
+                return R.color.sticker_green;
             case WHITE:
-                return Color.WHITE;
+                return R.color.sticker_white;
             case UNDEFINED:
                 // fall-through
             default:
-                return Color.LTGRAY;
-        }
-    }
-
-    public static Sticker fromStringColor(String color) {
-        switch (color) {
-            case "red":
-                return Sticker.RED;
-            case "green":
-                return Sticker.GREEN;
-            case "white":
-                return Sticker.WHITE;
-            default:
-                return Sticker.UNDEFINED;
+                return R.color.sticker_grey;
         }
     }
 }

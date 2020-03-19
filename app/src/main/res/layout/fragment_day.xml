@@ -41,7 +41,7 @@
                 android:id="@+id/fragment_day_flow_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/no_data"
                 android:textSize="24sp" />
 
@@ -66,7 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/colorAccent"
                 android:text="@string/edit_flow"
                 android:textAllCaps="true" />
@@ -84,7 +87,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/colorAccent"
                 android:text="@string/edit_mucus"
                 android:textAllCaps="true" />

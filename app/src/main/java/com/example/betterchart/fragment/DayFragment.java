@@ -1,18 +1,16 @@
 package com.example.betterchart.fragment;
 
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.betterchart.MainActivity;
 import com.example.betterchart.R;
+import com.example.betterchart.chart.ChartUtil;
 import com.example.betterchart.chart.DayInfo;
 import com.example.betterchart.chart.FlowType;
 
@@ -34,23 +32,28 @@ public class DayFragment extends Fragment {
 
         DayInfo di = ((MainActivity) getActivity()).getDayInfo();
 
-        // Display existing flow Type
+        // Display existing flow Type, which could be null
         FlowType flowType = di.getFlowType();
-        // Set sticker color
-        GradientDrawable background = (GradientDrawable) v.findViewById(R.id.fragment_day_sticker).getBackground();
-        background.setColor(di.getSticker().getColor());
 
-        // Set text
-        String displayText = "Flow: " + getString(flowType.getStringInt());  // TODO make string.format
-        TextView flowText = v.findViewById(R.id.fragment_day_flow_text);
-        flowText.setText(displayText);
+        if (flowType != null) {
+            // Set sticker color
+            ChartUtil.setBackgroundColor(getContext(),
+                    v.findViewById(R.id.fragment_day_sticker), di.getSticker().getColor());
+
+            // Set text
+            String displayText = "Flow: " + getString(flowType.getStringInt());  // TODO make string.format
+            TextView flowText = v.findViewById(R.id.fragment_day_flow_text);
+            flowText.setText(displayText);
+        } else {
+            ChartUtil.setBackgroundColor(getContext(),
+                    v.findViewById(R.id.fragment_day_sticker), R.color.sticker_grey);
+        }
+
 
         View addFlow = v.findViewById(R.id.add_flow_button);
         addFlow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(DayFragment.class.getName(), "addFlow called");
-
                 Fragment f = new AddBloodFragment();
                 ((MainActivity) getActivity()).openFragment(f);
             }
