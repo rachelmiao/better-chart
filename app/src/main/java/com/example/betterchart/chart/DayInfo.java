@@ -10,18 +10,22 @@ public class DayInfo {
     private Sticker sticker;
     private LocalDate date;
     private boolean isFirstDay;
+    private FlowType flowType;
+    private MucusData mucusData;
 
     private DayInfo(Builder builder) {
         sticker = builder.sticker;
         date = builder.date;
         isFirstDay = builder.isFirstDay;
+        flowType = builder.flowType;
+        mucusData = builder.mucusData;
     }
 
     LocalDate getDate() {
         return date;
     }
 
-    Sticker getSticker() {
+    public Sticker getSticker() {
         return sticker;
     }
 
@@ -29,10 +33,20 @@ public class DayInfo {
         return isFirstDay;
     }
 
+    public FlowType getFlowType() {
+        return flowType;
+    }
+
+    public MucusData getMucusData() {
+        return mucusData;
+    }
+
     public static class Builder {
         private Sticker sticker;
         private LocalDate date;
         private boolean isFirstDay;
+        private FlowType flowType;
+        private MucusData mucusData;
 
         public Builder setSticker(final Sticker sticker) {
             this.sticker = sticker;
@@ -46,6 +60,16 @@ public class DayInfo {
 
         public Builder setIsFirstDay(final boolean isFirstDay) {
             this.isFirstDay = isFirstDay;
+            return this;
+        }
+
+        public Builder setFlowType(final FlowType flowType) {
+            this.flowType = flowType;
+            return this;
+        }
+
+        public Builder setMucusData(final MucusData mucusData) {
+            this.mucusData = mucusData;
             return this;
         }
 

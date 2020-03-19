@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Better Chart</string>
+    <string name="done">Done</string>
+
+    <!-- Day Fragment -->
+    <string name="no_data">No data yet!</string>
+    <string name="edit_flow">Edit flow</string>
+    <string name="edit_mucus">Edit mucus</string>
+
+    <!-- Add Blood Fragment -->
+    <string name="how_heavy">How heavy is the flow?</string>
+
+    <string name="flow_type_heavy">Heavy</string>
+    <string name="flow_type_medium">Medium</string>
+    <string name="flow_type_light">Light</string>
+    <string name="flow_type_very_light">Very light</string>
+    <string name="flow_type_none">None</string>
 </resources>

@@ -11,7 +11,7 @@ public enum Sticker {
     WHITE,
     UNDEFINED;
 
-    int getColor() {
+    public int getColor() {
         switch (this) {
             case RED:
                 return Color.RED;

@@ -5,15 +5,70 @@ import java.util.List;
 public class MucusData {
 
     // Mucus frequency constants
-    private static final int MUCUS_ONCE = 1;
-    private static final int MUCUS_TWICE = 2;
-    private static final int MUCUS_THRICE = 3;
-    private static final int MUCUS_ALL_DAY = 4;
+    public static final int MUCUS_ONCE = 1;
+    public static final int MUCUS_TWICE = 2;
+    public static final int MUCUS_THRICE = 3;
+    public static final int MUCUS_ALL_DAY = 4;
 
     private int mucusNumber;  // This number should be one of: 0, 2, 4, 6, 8, 10
     private List<String> mucusTypes;
     private int mucusFrequency;
     private boolean isFirstDay;
+
+    public int getMucusNumber() {
+        return mucusNumber;
+    }
+
+    public List<String> getMucusTypes() {
+        return mucusTypes;
+    }
+
+    public int getMucusFrequency() {
+        return mucusFrequency;
+    }
+
+    public boolean isFirstDay() {
+        return isFirstDay;
+    }
+
+    private MucusData(Builder builder) {
+        this.mucusNumber = builder.mucusNumber;
+        this.mucusTypes = builder.mucusTypes;
+        this.mucusFrequency = builder.mucusFrequency;
+        this.isFirstDay = builder.isFirstDay;
+    }
+
+    public static class Builder {
+
+        private int mucusNumber;
+        private List<String> mucusTypes;
+        private int mucusFrequency;
+        private boolean isFirstDay;
+
+        public Builder setMucusNumber(int number) {
+            this.mucusNumber = number;
+            return this;
+        }
+
+        public Builder setMucusTypes(List<String> types) {
+            this.mucusTypes = types;
+            return this;
+        }
+
+        public Builder setMucusFrequency(int frequency) {
+            this.mucusFrequency = frequency;
+            return this;
+        }
+
+        public Builder setIsFirstDay(boolean isFirstDay) {
+            this.isFirstDay = isFirstDay;
+            return this;
+        }
+
+        public MucusData create() {
+            return new MucusData(this);
+        }
+    }
 
     public enum MucusType {
         WET,

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/how_heavy"
+        android:textAlignment="center"
+        android:textColor="#222222"
+        android:textSize="30sp" />
+
+    <RadioGroup
+        android:id="@+id/radio_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio_flow_heavy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flow_type_heavy"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_flow_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flow_type_medium"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_flow_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flow_type_light"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_flow_very_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flow_type_very_light"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_flow_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flow_type_none"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/add_blood_done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="@string/done" />
+
+</LinearLayout>
