@@ -160,15 +160,5 @@ public class MucusData {
             }
             return null;
         }
-
-        private static boolean isColor(MucusType type) {
-            MucusType[] colors = {BROWN, CLOUDY, CLEAR, CLOUDY_CLEAR, RED, YELLOW};
-            return Arrays.asList(colors).contains(type);
-        }
-
-        private static boolean isAppearance(MucusType type) {
-            MucusType[] appearances = {WET, SHINY, DAMP};
-            return Arrays.asList(appearances).contains(type);
-        }
     }
 }

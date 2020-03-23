@@ -1,7 +1,5 @@
 package com.example.betterchart.chart;
 
-import android.util.Log;
-
 import org.threeten.bp.LocalDate;
 
 /**
@@ -78,7 +76,6 @@ public class DayInfo {
         public Builder setMucusData(final MucusData mucusData) {
             this.mucusData = mucusData;
             updateSticker();
-            Log.d(DayInfo.class.getName(), "Mucus Data: " + mucusData.getDisplayString());
             return this;
         }
 

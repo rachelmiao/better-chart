@@ -67,7 +67,6 @@ public class DayFragment extends Fragment {
             mucusText.setText(mucusData.getDisplayString());
         }
 
-
         View editFlow = v.findViewById(R.id.edit_flow_button);
         editFlow.setOnClickListener(new View.OnClickListener() {
             @Override
