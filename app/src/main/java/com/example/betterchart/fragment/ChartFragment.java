@@ -18,6 +18,8 @@ import com.example.betterchart.R;
 import com.example.betterchart.chart.ChartRenderer;
 import com.example.betterchart.chart.Cycle;
 import com.example.betterchart.chart.DayInfo;
+import com.example.betterchart.chart.FlowType;
+import com.example.betterchart.chart.MucusData;
 import com.example.betterchart.chart.Sticker;
 import com.example.betterchart.data.SingletonRequestQueue;
 
@@ -75,14 +77,43 @@ public class ChartFragment extends Fragment {
                                 JSONObject record = records.getJSONObject(i);
                                 JSONObject fields = record.getJSONObject("fields");
 
-                                // If no date or sticker, continue
-                                if (!fields.has("date") || !fields.has("sticker")) {
+                                Log.d(ChartFragment.class.getName(), "Fields: " + fields.toString());
+
+                                DayInfo.Builder dayInfo = new DayInfo.Builder();
+
+                                // If no date, continue
+                                if (!fields.has("date")) {
                                     continue;
                                 }
                                 String date = fields.getString("date");
-                                String sticker = fields.getString("sticker");
+                                dayInfo.setDate(LocalDate.parse(date));
 
-                                DayInfo.Builder dayInfo = new DayInfo.Builder().setDate(LocalDate.parse(date));
+                                // Flow Type
+                                if (fields.has("flowType")) {
+                                    String flowTypeString = fields.getString("flowType");
+                                    FlowType flowType = FlowType.fromString(getContext(), flowTypeString);
+                                    dayInfo.setFlowType(flowType);
+                                }
+
+                                // Todo: set mucus etc
+                                MucusData.Builder mucusData = new MucusData.Builder();
+                                if (fields.has("mucusNumber")) {
+                                    int mucusNumber = fields.getInt("mucusNumber");
+                                    mucusData.setMucusNumber(mucusNumber);
+                                }
+                                List<MucusData.MucusType> types = new ArrayList<>();
+                                if (fields.has("mucusTypes")) {
+                                    JSONArray arr = fields.getJSONArray("mucusTypes");
+                                    for (int j = 0; j < arr.length(); j++) {
+                                        String typeString = arr.getString(j);
+                                        MucusData.MucusType type = MucusData.MucusType.fromString(typeString);
+                                        if (type != null) {
+                                            types.add(type);
+                                        }
+                                    }
+                                }
+                                mucusData.setMucusTypes(types);
+                                dayInfo.setMucusData(mucusData.create());
 
                                 if (fields.has("isFirstDay")) {
                                     dayInfo.setIsFirstDay(fields.getBoolean("isFirstDay"));

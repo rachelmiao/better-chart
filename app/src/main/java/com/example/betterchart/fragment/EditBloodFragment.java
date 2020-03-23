@@ -1,7 +1,6 @@
 package com.example.betterchart.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import com.example.betterchart.chart.FlowType;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddBloodFragment extends Fragment {
+public class EditBloodFragment extends Fragment {
 
     private RadioGroup radioFlow;
     private MainActivity mainActivity;
@@ -27,7 +26,7 @@ public class AddBloodFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_blood, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_blood, container, false);
 
         mainActivity = (MainActivity) getActivity();
 
@@ -49,16 +48,18 @@ public class AddBloodFragment extends Fragment {
             rb.setChecked(true);
         }
 
-        Button b = view.findViewById(R.id.add_blood_done_button);
+        Button b = view.findViewById(R.id.edit_blood_done_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RadioButton b = radioFlow.findViewById(radioFlow.getCheckedRadioButtonId());
-                String selectedFlow = (String) b.getText();
-                FlowType flowType = FlowType.fromString(getContext(), selectedFlow);
+                if (b != null) {
+                    String selectedFlow = (String) b.getText();
+                    FlowType flowType = FlowType.fromString(getContext(), selectedFlow);
 
-                // Set the FlowType.
-                ((MainActivity) getActivity()).setFlowType(flowType);
+                    // Set the FlowType.
+                    ((MainActivity) getActivity()).setFlowType(flowType);
+                }
 
                 // Go back to DayFragment
                 getFragmentManager().popBackStack();

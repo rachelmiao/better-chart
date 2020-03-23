@@ -59,7 +59,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/add_blood_done_button"
+        android:id="@+id/edit_blood_done_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/design_default_color_secondary"

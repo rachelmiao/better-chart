@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.betterchart.MainActivity;
@@ -13,11 +14,21 @@ import com.example.betterchart.R;
 import com.example.betterchart.chart.ChartUtil;
 import com.example.betterchart.chart.DayInfo;
 import com.example.betterchart.chart.FlowType;
+import com.example.betterchart.chart.MucusData;
 
 public class DayFragment extends Fragment {
 
+    private MainActivity mainActivity;
+
     public DayFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mainActivity = (MainActivity) getActivity();
     }
 
     public static DayFragment newInstance() {
@@ -49,13 +60,29 @@ public class DayFragment extends Fragment {
                     v.findViewById(R.id.fragment_day_sticker), R.color.sticker_grey);
         }
 
+        // Display exising mucus description text
+        MucusData mucusData = di.getMucusData();
+        if (mucusData != null) {
+            TextView mucusText = v.findViewById(R.id.fragment_day_mucus_text);
+            mucusText.setText(mucusData.getDisplayString());
+        }
 
-        View addFlow = v.findViewById(R.id.add_flow_button);
-        addFlow.setOnClickListener(new View.OnClickListener() {
+
+        View editFlow = v.findViewById(R.id.edit_flow_button);
+        editFlow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment f = new AddBloodFragment();
-                ((MainActivity) getActivity()).openFragment(f);
+                Fragment f = new EditBloodFragment();
+                mainActivity.openFragment(f);
+            }
+        });
+
+        View editMucus = v.findViewById(R.id.edit_mucus_button);
+        editMucus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new EditMucusFragment();
+                mainActivity.openFragment(f);
             }
         });
 

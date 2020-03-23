@@ -1,5 +1,7 @@
 package com.example.betterchart.chart;
 
+import android.util.Log;
+
 import org.threeten.bp.LocalDate;
 
 /**
@@ -76,6 +78,7 @@ public class DayInfo {
         public Builder setMucusData(final MucusData mucusData) {
             this.mucusData = mucusData;
             updateSticker();
+            Log.d(DayInfo.class.getName(), "Mucus Data: " + mucusData.getDisplayString());
             return this;
         }
 
@@ -84,7 +87,9 @@ public class DayInfo {
          */
         private void updateSticker() {
             // If there is any blood (flowtype or brown mucus), sticker is red regardless of mucus.
-            if (flowType != null && flowType != FlowType.NONE) {
+            boolean bloodFlow = flowType != null && flowType != FlowType.NONE;
+            boolean brownMucus = mucusData != null && mucusData.hasSpotting();
+            if (bloodFlow || brownMucus) {
                 setSticker(Sticker.RED);
                 return;
             }

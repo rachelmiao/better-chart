@@ -28,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Default DayInfo with no sticker. Intentionally not setting FlowType.
+        // Default DayInfo with no sticker.
         // TODO - this should be a network call for today's entry
         dayInfo = new DayInfo.Builder()
+                .setFlowType(FlowType.NONE)
                 .setDate(LocalDate.now())
                 .setIsFirstDay(false);
 
@@ -75,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setFlowType(FlowType flowType) {
         dayInfo.setFlowType(flowType);
+
+        // TODO update database
+    }
+
+    public void setMucusData(MucusData mucusData) {
+        dayInfo.setMucusData(mucusData);
 
         // TODO update database
     }
